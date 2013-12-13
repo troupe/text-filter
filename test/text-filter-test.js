@@ -20,11 +20,25 @@ describe('text-filter', function() {
     assert.equal(result[0], 'The evil human resources director');
   });
 
-  it('should find the right phrases in a text array', function() {
+  it('should find the right phrases in a object array', function() {
     var result = fixture.filter(textFilter({ query: 'Kat', fields: ['name', 'description'] }));
     assert.equal(result.length, 2);
     assert.equal(result[0].name, 'Alley-Kat-Abra');
     assert.equal(result[1].name, 'Bucky Katt');
   });
+
+  it('should handle undefined fields', function() {
+    var result = fixture.filter(textFilter({ query: 'Kat', fields: ['name', 'description', 'bob'] }));
+    assert.equal(result.length, 2);
+    assert.equal(result[0].name, 'Alley-Kat-Abra');
+    assert.equal(result[1].name, 'Bucky Katt');
+  });
+
+
+  it('should not find text in the middle of words', function() {
+    var result = fixture.filter(textFilter({ query: 'ucky', fields: ['name', 'description'] }));
+    assert.equal(result.length, 0);
+  });
+
 
 });
