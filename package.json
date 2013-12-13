@@ -1,0 +1,28 @@
+{
+  "name": "text-filter",
+  "version": "0.1.0",
+  "description": "A nano-scale module to match text in arrays",
+  "main": "index.js",
+  "scripts": {
+    "test": "make text"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/troupe/text-filter.git"
+  },
+  "keywords": [
+    "text",
+    "filter",
+    "search",
+    "array"
+  ],
+  "author": "Andrew Newdigate",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/troupe/text-filter/issues"
+  },
+  "homepage": "https://github.com/troupe/text-filter",
+  "devDependencies": {
+    "mocha": "~1.15.1"
+  }
+}
