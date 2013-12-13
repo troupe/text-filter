@@ -10,6 +10,15 @@ var fixture = [
  { name: 'Catbert Dilbert', description: 'The evil human resources director' }
 ];
 
+var fixture2 = [
+ { name: 'one two' },
+ { name: 'one three' },
+ { name: 'one four' },
+ { name: 'four one' },
+ { name: 'two one one' }
+];
+
+
 var simpleFixture = fixture.map(function(f) { return f.description; });
 
 describe('text-filter', function() {
@@ -34,6 +43,12 @@ describe('text-filter', function() {
     assert.equal(result[1].name, 'Bucky Katt');
   });
 
+  it('should AND phrases together when multiple phrases are used', function() {
+    var result = fixture2.filter(textFilter({ query: 'one two', fields: ['name'] }));
+    assert.equal(result.length, 2);
+    assert.equal(result[0].name, 'one two');
+    assert.equal(result[1].name, 'two one one');
+  });
 
   it('should not find text in the middle of words', function() {
     var result = fixture.filter(textFilter({ query: 'ucky', fields: ['name', 'description'] }));
