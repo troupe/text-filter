@@ -1,6 +1,6 @@
 {
   "name": "text-filter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A nano-scale module to match text in arrays",
   "main": "index.js",
   "scripts": {
