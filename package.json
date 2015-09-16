@@ -4,7 +4,7 @@
   "description": "A nano-scale module to match text in arrays",
   "main": "index.js",
   "scripts": {
-    "test": "make text"
+    "test": "mocha test/"
   },
   "repository": {
     "type": "git",

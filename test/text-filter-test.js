@@ -7,7 +7,9 @@ var fixture = [
  { name: 'Bill the Cat', description: 'A largely comatose orange tabby' },
  { name: 'Blacksad', description: 'Main character of graphic novel series.' },
  { name: 'Bucky Katt', description: 'selfish, cynical, and lazy. His ears are nearly always drawn laid back flat on his head, a feline sign of defiance, aggressiveness and/or unfriendliness' },
- { name: 'Catbert Dilbert', description: 'The evil human resources director' }
+ { name: 'Catbert Dilbert', description: 'The evil human resources director' },
+ { name: 'Slasher Brown', description: 'The man with \\ in his name' },
+ { name: 'Mister Moneybags', description: 'The bloke with $$$' }
 ];
 
 var fixture2 = [
@@ -53,6 +55,16 @@ describe('text-filter', function() {
   it('should not find text in the middle of words', function() {
     var result = fixture.filter(textFilter({ query: 'ucky', fields: ['name', 'description'] }));
     assert.equal(result.length, 0);
+  });
+
+  it('should handle regexp escape chars', function() {
+    var result = fixture.filter(textFilter({ query: '\\', fields: ['name', 'description'] }));
+    assert.equal(result.length, 1);
+  });
+
+  it('should handle regexp escape chars', function() {
+    var result = fixture.filter(textFilter({ query: '$', fields: ['name', 'description'] }));
+    assert.equal(result.length, 1);
   });
 
 
